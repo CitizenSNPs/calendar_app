@@ -1,0 +1,35 @@
+body{
+  text-align: center;
+  color: white;
+  font-family: Helvetica;
+  font-weight: bold;
+  font-size: 32pt;
+}
+
+.calendar {
+  border: black solid 2px;
+  height: 50vh;
+  width: 50vw
+}
+
+td {
+  border: black solid 2px;
+  color: black;
+  font-size: 10pt;
+  width: 100px;
+}
+
+.month{
+  background-color: red;
+  height: 10vh;
+}
+
+.daysofweekcell{
+  background-color: gray;
+  color: white;
+  font-family: Helvetica;
+}
+
+.container {
+  width: 50vw;
+}
