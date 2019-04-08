@@ -33,3 +33,11 @@ td {
 .container {
   width: 50vw;
 }
+
+button{
+  display: inline-block;
+}
+
+p{
+  display: inline-block;
+}
