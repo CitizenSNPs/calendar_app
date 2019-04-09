@@ -6,6 +6,7 @@ body{
   font-size: 32pt;
 }
 
+
 .calendar {
   border: black solid 2px;
   height: 50vh;
@@ -16,12 +17,13 @@ td {
   border: black solid 2px;
   color: black;
   font-size: 10pt;
-  width: 100px;
+  width: 50%;
 }
 
 .month{
   background-color: red;
   height: 10vh;
+  width: 65vw;
 }
 
 .daysofweekcell{
@@ -31,7 +33,7 @@ td {
 }
 
 .container {
-  width: 50vw;
+  width: 70vw;
 }
 
 button{

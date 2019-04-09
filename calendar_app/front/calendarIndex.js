@@ -1,7 +1,29 @@
 $("document").ready(function() {
   console.log('script loaded');
-})
+  inputDays();
+});
 
+// // let firstDay = (new Date(2019,  )).getDay();
+// console.log(firstDay);
+const months = ["January", "February","March","April","May","June","July","August",
+"September", "October", "November", "December"];
+const table = document.getElementById('calendar');
+
+const daysInMonth = function(month, year) {
+    return new Date(year, month, 0).getDate();
+}
+
+
+const inputDays = function(){
+  $('td').html("");
+  let index = months.indexOf($("p").html()); //index of month in months array
+  let firstDay = new Date(2019, index).getDay(); //first day of the month
+
+  let test = daysInMonth(index+1,2019);
+  for (var i = firstDay, j=0; j<test ; i++, j++){
+  $('td').eq(i).html(j+1) //adding days starting at first day of month
+}
+}
 //AJAX request to server; get request to grab employee data
 $("td").click(function(){
   console.log(this.className);
@@ -20,7 +42,7 @@ $("td").click(function(){
     }
   });
 });
-
+//next button
 $('#Next').click(function(){
   if ($("p").html()=="December"){
     console.log("Month is december");
@@ -30,8 +52,9 @@ $('#Next').click(function(){
   "September", "October", "November", "December"];
   var index = months.indexOf($("p").html());
   $("p").html(months[index+1]);
+  inputDays();
 });
-
+//prev button
 $('#Prev').click(function(){
   if ($("p").html()=="January"){
     console.log("Month is january");
@@ -41,4 +64,5 @@ $('#Prev').click(function(){
   "September", "October", "November", "December"];
   var index = months.indexOf($("p").html());
   $("p").html(months[index-1]);
+  inputDays();
 });

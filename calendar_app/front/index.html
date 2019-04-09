@@ -11,24 +11,27 @@
 
     <div class="month">
       <button type="button" id="Prev">Prev</button>
-      <p>April</p>
+      <p #monthtext>April</p>
       <button type="button" id="Next">Next</button>
 
     </div>
 
     <div class="days">
-    <table class="calendar">
+    <table class="calendar" id="calendar">
 
+      <thead>
       <tr id="daysofweek">
-        <td class="daysofweekcell">Sunday</td>
-        <td class="daysofweekcell">Monday</td>
-        <td class="daysofweekcell">Tuesday</td>
-        <td class="daysofweekcell">Wednesday</td>
-        <td class="daysofweekcell">Thursday</td>
-        <td class="daysofweekcell">Friday</td>
-        <td class="daysofweekcell">Saturday</td>
+        <th class="daysofweekcell">Sunday</th>
+        <th class="daysofweekcell">Monday</th>
+        <th class="daysofweekcell">Tuesday</th>
+        <th class="daysofweekcell">Wednesday</th>
+        <th class="daysofweekcell">Thursday</th>
+        <th class="daysofweekcell">Friday</th>
+        <th class="daysofweekcell">Saturday</th>
       </tr>
+    </thead>
 
+    <tbody>
     <tr id="week1">
       <td class="Sunday"></td>
       <td class="Monday"></td>
@@ -78,6 +81,17 @@
       <td class="Friday"></td>
       <td class="Saturday"></td>
     </tr>
+
+    <tr id="week6">
+      <td class="Sunday"></td>
+      <td class="Monday"></td>
+      <td class="Tuesday"></td>
+      <td class="Wednesday"></td>
+      <td class="Thursday"></td>
+      <td class="Friday"></td>
+      <td class="Saturday"></td>
+    </tr>
+  </tbody>
     </table>
     </div>
     </div>
