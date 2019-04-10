@@ -3,6 +3,7 @@ $("document").ready(function() {
   inputDays();
   createOptionMenu();
   daysChecked();
+  tooltipShow();
 });
 
 //creating option menu
@@ -44,6 +45,7 @@ const inputDays = function(){
 }
 }
 
+
 //AJAX request to server; GET request to grab employee data
 $("td").click(function(){
   console.log(this.className);
@@ -61,6 +63,51 @@ $("td").click(function(){
     }
   });
 });
+
+var tooltipShow = function(){
+  var daysEmployees = [];
+  $('td').on({
+  "click": function() {
+    var cellClass = $(this.className);
+    console.log(cellClass.selector);
+    console.log(typeof cellClass.selector);
+    $.get( "http://localhost:3000/calendar")
+    .done(function(data) {
+      console.log($(this.className));
+      for (index in data){
+        if(data[index]["schedule"]){
+          if (data[index]["schedule"].replace(/\s/g,'').split(",").includes(cellClass.selector)){
+            daysEmployees.push(`${data[index]['firstName']} ${data[index]['lastName']}`);
+          } else {
+            continue;
+          }
+        }
+      }
+ });
+    var daysEmployeesString = daysEmployees.toString();
+    $(this).tooltip({ items: "td", content: daysEmployeesString});
+    $(this).tooltip("open");
+    daysEmployees = [];
+  }
+});
+}
+
+
+$("td").hover(function(){
+  $(this).css("background-color", "gray");
+}, function(){
+  $(this).css("background-color", "white")
+});
+
+
+// const tooptips = function(){
+//   $('td').on({
+//   "click": function() {
+//     $(this).tooltip({ items: "td", content: "Displaying on click"});
+//     $(this).tooltip("open");
+//   }
+// });
+// }
 
 //AJAX request to server; POST new employees to server
 $('#newEmployeeSubmit').click(function(){
