@@ -96,12 +96,29 @@
   </div> <!-- end of calendar  -->
 
     <div class="forms">
+      Add new employee
       <form>
         First name:<br>
         <input type="text" name="firstname" class="formText"><br>
         Last name:<br>
         <input type="text" name="lastname" class="formText">
       </form>
+  <form action="" method="post">
+  <input class= "newEmployeeCheckbox" type="checkbox" name="workday1" value="Sunday" /> Sun
+  <input class= "newEmployeeCheckbox" type="checkbox" name="workday2" value="Monday" /> Mon
+  <input class= "newEmployeeCheckbox" type="checkbox" name="workday3" value="Tuesday" /> Tues
+  <input class= "newEmployeeCheckbox" type="checkbox" name="workday4" value="Wednesday" /> Wed
+  <input class= "newEmployeeCheckbox" type="checkbox" name="workday5" value="Thursday" /> Thurs
+  <input class= "newEmployeeCheckbox" type="checkbox" name="workday6" value="Friday" /> Fri
+  <input class= "newEmployeeCheckbox" type="checkbox" name="workday7" value="Saturday" /> Sat
+</form>
+<input id="newEmployeeSubmit" type="submit">
+</div>
+
+<div class='forms'>
+Change employee schedule
+<select>
+  <option value="empty">Choose an employee</option>
   <form action="" method="post">
   <input type="checkbox" name="workday1" value="Sunday" /> Sun
   <input type="checkbox" name="workday2" value="Monday" /> Mon
@@ -111,13 +128,8 @@
   <input type="checkbox" name="workday6" value="Friday" /> Fri
   <input type="checkbox" name="workday7" value="Saturday" /> Sat
 </form>
-<input type="submit">
-</div>
-
-Change employee schedule
-<select>
-  <option value="empty">--Empty--</option>
 </select>
+</div>
 
   </div> <!-- end of container  -->
 
