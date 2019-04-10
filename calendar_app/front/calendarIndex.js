@@ -2,6 +2,7 @@ $("document").ready(function() {
   console.log('script loaded');
   inputDays();
   createOptionMenu();
+  daysChecked();
 });
 
 //creating option menu
@@ -68,7 +69,8 @@ $('#newEmployeeSubmit').click(function(){
   } else if (!(checked())){
     console.log('Could not create new employee: Please select a schedule.')
   } else {
-  $.post('http://localhost:3000/calendar', { firstName: $('.formText')[0].value, lastName: $('.formText')[1].value, schedule:"Tues-Sat" } );
+    let checkList = daysChecked();
+  $.post('http://localhost:3000/calendar', { firstName: $('.formText')[0].value, lastName: $('.formText')[1].value, schedule: checkList } );
   console.log('created a new employee')
   }
 });
@@ -85,6 +87,18 @@ const checked = function(){
   return false;
 }
 
+const daysChecked = function(){
+  list = [];
+  for (var i = 0; i < $('.newEmployeeCheckbox').length; i++){
+    if ($('.newEmployeeCheckbox')[i].checked){
+      list.push($('.newEmployeeCheckbox')[i].value)
+    } else {
+      continue;
+    }
+  }
+  console.log(list);
+  return list;
+}
 
 //next button
 $('#Next').click(function(){
