@@ -47,50 +47,46 @@ const inputDays = function(){
 
 
 //AJAX request to server; GET request to grab employee data
-$("td").click(function(){
-  console.log(this.className);
-  var day = this.className.toString();
-  $.get('http://localhost:3000/calendar', function(data, status){
-    console.log(data);
-    for (index in data){
-      if(data[index]["schedule"]){
-        if (data[index]["schedule"].replace(/\s/g,'').split(",").includes(day)){ //trim spaces and split by comma
-          console.log(`${data[index]['firstName']} ${data[index]['lastName']}`);
-        }
-      }else{
-        console.log("day not in employee's schedule");
-      }
-    }
-  });
-});
+// $("td").click(function(){
+//   console.log(this.className);
+//   var day = this.className.toString();
+//   $.get('http://localhost:3000/calendar', function(data, status){
+//     console.log(data);
+//     for (index in data){
+//       if(data[index]["schedule"]){
+//         if (data[index]["schedule"].replace(/\s/g,'').split(",").includes(day)){ //trim spaces and split by comma
+//           console.log(`${data[index]['firstName']} ${data[index]['lastName']}`);
+//         }
+//       }else{
+//         console.log("day not in employee's schedule");
+//       }
+//     }
+//   });
+// });
 
 var tooltipShow = function(){
-  var daysEmployees = [];
   $('td').on({
-  "click": function() {
-    var cellClass = $(this.className);
-    console.log(cellClass.selector);
-    console.log(typeof cellClass.selector);
-    $.get( "http://localhost:3000/calendar")
+    "click": function() {
+      var td = $(this);
+      let listofEmployees = [];
+      var id=this.className;
+      console.log(id);
+    $.get( `http://localhost:3000/calendar/${id}`)
     .done(function(data) {
-      console.log($(this.className));
-      for (index in data){
-        if(data[index]["schedule"]){
-          if (data[index]["schedule"].replace(/\s/g,'').split(",").includes(cellClass.selector)){
-            daysEmployees.push(`${data[index]['firstName']} ${data[index]['lastName']}`);
-          } else {
-            continue;
-          }
-        }
+      for (index in data) {
+        console.log(data[index].firstName);
+        listofEmployees.push(data[index].firstName)
       }
- });
-    var daysEmployeesString = daysEmployees.toString();
-    $(this).tooltip({ items: "td", content: daysEmployeesString});
-    $(this).tooltip("open");
-    daysEmployees = [];
-  }
-});
+      var string = listofEmployees.toString();
+      td.tooltip({ items: "td", content: string});
+      td.tooltip("open");
+      listofEmployees = [];
+    });
+
+    }
+  });
 }
+
 
 
 $("td").hover(function(){
