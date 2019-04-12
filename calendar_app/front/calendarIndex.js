@@ -41,7 +41,7 @@ const inputDays = function(){
 
   let test = daysInMonth(index+1,2019);
   for (var i = firstDay, j=0; j<test ; i++, j++){
-  $('td').eq(i).html(j+1) //adding days starting at first day of month
+  $('td').eq(i).html(j+1).css({"color":"gray"}) //adding days starting at first day of month
 }
 }
 
@@ -67,6 +67,7 @@ const inputDays = function(){
 var tooltipShow = function(){
   $('td').on({
     "click": function() {
+      console.log(!($(this).html()));
       var td = $(this);
       let listofEmployees = [];
       var id=this.className;
@@ -82,17 +83,15 @@ var tooltipShow = function(){
       td.tooltip("open");
       listofEmployees = [];
     });
-
     }
   });
 }
 
 
-
 $("td").hover(function(){
-  $(this).css("background-color", "gray");
+  $(this).css({"background-color": "#c1d4fb", "color":"white"});
 }, function(){
-  $(this).css("background-color", "white")
+  $(this).css({"background-color": "white", "color":"gray"})
 });
 
 
