@@ -1,9 +1,12 @@
-var {addNewEmployee, getAllEmployees } = require('../controllers/EmployeeController.js');
+var {addNewEmployee, getAllEmployees, getDaysEmployees } = require('../controllers/EmployeeController.js');
 
 const routes = (app) => {
   app.route('/calendar')
   .get(getAllEmployees)
   .post(addNewEmployee);
+
+  app.route('/calendar/:id')
+  .get(getDaysEmployees);
 }
 
 module.exports = routes;

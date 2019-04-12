@@ -22,8 +22,22 @@ const getAllEmployees = (req, res) => {
       console.log('Could not retrieve employees.')
     }else{
       res.json(employees);
+      console.log('retrieved employees');
     }
   });
 }
 
-module.exports = {addNewEmployee, getAllEmployees}
+const getDaysEmployees = (req, res) => {
+  Employee.find({"schedule": req.params.id}, (err, employees) => {
+    if (err) {
+      res.send(err);
+      console.log('Could not find employees for that day.')
+    }else{
+      res.json(employees);
+      console.log(employees.firstName);
+      console.log('Found employees for that day');
+    }
+  });
+}
+
+module.exports = {addNewEmployee, getAllEmployees, getDaysEmployees};
